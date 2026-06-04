@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CapassoTech — Docs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <aside id="sidebar">
+        <div id="sidebar-header">
+          <div class="sidebar-heading">Documentación</div>
+        </div>
+        <div class="sidebar-label">Proyectos</div>
+        <div id="proj-list"></div>
+      </aside>
+
+      <div id="shell">
+        <header id="topbar">
+          <div class="topbar-brand">
+            <img
+              class="brand-logo"
+              src="https://tracker.capasso.tech/logo.png"
+              alt="Capasso Tech"
+              width="140"
+              height="40"
+            />
+          </div>
+          <span class="topbar-divider" aria-hidden="true"></span>
+          <span class="topbar-app">Documentació de proyectos</span>
+          <div class="topbar-spacer"></div>
+          <button
+            type="button"
+            id="theme-toggle"
+            class="theme-toggle"
+            onclick="toggleTheme()"
+            aria-label="Cambiar tema"
+            title="Cambiar tema"
+          >
+            <span class="theme-toggle-icon theme-icon-sun" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8" />
+                <path
+                  d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <span class="theme-toggle-icon theme-icon-moon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+        </header>
+
+        <main id="main">
+          <div id="proj-header">
+            <div id="proj-parent-label"></div>
+            <div id="proj-title"></div>
+            <div id="proj-desc"></div>
+            <div id="stack-badges"></div>
+            <div id="tabs"></div>
+          </div>
+          <div id="content"></div>
+        </main>
+      </div>
+    </div>
+
+    <script src="projects/inee.js"></script>
+    <script src="projects/epefi.js"></script>
+    <script src="projects/index.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
