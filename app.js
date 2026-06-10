@@ -260,28 +260,87 @@ function renderEntornos(sub) {
     }`;
 }
 
+function formatEnvLine(key, value) {
+  const str = String(value);
+  if (/^[A-Za-z0-9_./:@-]+$/.test(str)) {
+    return `${key}=${str}`;
+  }
+  const escaped = str.replace(/"/g, '\\"').replace(/\r?\n/g, "\\n");
+  return `${key}="${escaped}"`;
+}
+
+function getActiveEnvGroup(sub) {
+  const groups = sub.envGroups || [];
+  return groups.find((g) => g.name === currentEnvGroup) || groups[0];
+}
+
+function formatEnvBlock(vars) {
+  return (vars || []).map((v) => formatEnvLine(v.key, v.value)).join("\n");
+}
+
+async function copyCurrentEnvVars() {
+  const activeGroup = getActiveEnvGroup(currentSubproject);
+  if (!activeGroup?.vars?.length) return;
+
+  const text = formatEnvBlock(activeGroup.vars);
+  const btn = document.getElementById("env-copy-btn");
+
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+  }
+
+  if (btn) {
+    const original = btn.dataset.defaultLabel || btn.textContent;
+    btn.dataset.defaultLabel = original;
+    btn.textContent = "¡Copiado!";
+    btn.classList.add("copied");
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove("copied");
+    }, 2000);
+  }
+}
+
 function renderVariables(sub) {
   const groups = sub.envGroups || [];
   if (!groups.length) {
     return renderEmpty("No hay variables de entorno documentadas.");
   }
 
-  const activeGroup =
-    groups.find((g) => g.name === currentEnvGroup) || groups[0];
+  const activeGroup = getActiveEnvGroup(sub);
 
   return `
     ${renderSubsectionTitle("Variables de entorno")}
-    <div class="env-group-pills">
-      ${groups
-        .map(
-          (g) => `
-        <button
-          type="button"
-          class="env-pill ${g.name === activeGroup.name ? "active" : ""}"
-          onclick="selectEnvGroup('${g.name}')"
-        >${escapeHtml(g.label)}</button>`
-        )
-        .join("")}
+    <div class="env-vars-toolbar">
+      <div class="env-group-pills">
+        ${groups
+          .map(
+            (g) => `
+          <button
+            type="button"
+            class="env-pill ${g.name === activeGroup.name ? "active" : ""}"
+            onclick="selectEnvGroup('${g.name}')"
+          >${escapeHtml(g.label)}</button>`
+          )
+          .join("")}
+      </div>
+      <button
+        type="button"
+        id="env-copy-btn"
+        class="env-copy-btn"
+        onclick="copyCurrentEnvVars()"
+        title="Copiar variables del entorno activo como archivo .env"
+      >Copiar .env</button>
     </div>
     <div class="table-wrap">
       <table class="env-vars-table">
