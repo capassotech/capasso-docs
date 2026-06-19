@@ -103,6 +103,7 @@ body {
 .module-card,
 .env-card,
 .deploy-card,
+.platform-card,
 .folder-row,
 .env-pill,
 .theme-toggle {
@@ -1182,3 +1183,66 @@ html:not([data-theme]) .theme-icon-moon {
   letter-spacing: 0.04em;
 }
 .subsection-title:first-child { margin-top: 0; }
+
+/* ── Plataformas ── */
+.platform-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.platform-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.platform-card:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-100);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.platform-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.platform-card-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.platform-card-desc {
+  font-size: var(--text-xs);
+  color: var(--gray-500);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+.platform-card-action {
+  flex-shrink: 0;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--blue-500);
+  background: var(--surface);
+  border: 1px solid var(--blue-100);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+.platform-card:hover .platform-card-action {
+  background: var(--blue-100);
+  border-color: var(--blue-400);
+}

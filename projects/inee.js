@@ -27,6 +27,156 @@ const RENDER_DEPLOY_CHECKLIST = [
   "Testear el endpoint /health o cualquier ruta pública para confirmar que levantó",
 ];
 
+const INEE_SHARED_PLATFORMS = [
+  {
+    category: "Gestión del proyecto",
+    links: [
+      {
+        label: "Jira — gestión integral",
+        url: "https://capassotech.atlassian.net/jira/software/projects/INEE/boards/38",
+        desc: "Gestión integral, tableros, sprints, cronogramas y mas",
+      },
+      {
+        label: "Trello — tablero INEE",
+        url: "https://trello.com/b/y6BhOHjP/inee",
+        desc: "Tickets y seguimiento de tareas del equipo",
+      },
+    ],
+  },
+];
+
+const INEE_BACKEND_PLATFORMS = [
+  {
+    category: "Repositorio",
+    links: [
+      {
+        label: "INEE-backend",
+        url: "https://github.com/capassotech/INEE-backend",
+        desc: "Código fuente del API REST en GitHub",
+      },
+    ],
+  },
+  {
+    category: "Deploy",
+    links: [
+      {
+        label: "Render Dashboard",
+        url: "https://dashboard.render.com/",
+        desc: "Web service del backend (QA y producción)",
+      },
+    ],
+  },
+  {
+    category: "Firebase (Admin SDK)",
+    links: [
+      {
+        label: "Firebase — QA (inee-qa)",
+        url: "https://console.firebase.google.com/u/0/project/inee-qa/overview",
+        desc: "Firestore, Auth y Storage usados por el backend en QA",
+      },
+      {
+        label: "Firebase — Prod (inee-admin)",
+        url: "https://console.firebase.google.com/u/0/project/inee-admin/overview",
+        desc: "Firestore, Auth y Storage usados por el backend en producción",
+      },
+    ],
+  },
+  {
+    category: "Servicios externos",
+    links: [
+      {
+        label: "Resend",
+        url: "https://resend.com/login",
+        desc: "Emails transaccionales (compras, recordatorios, contacto)",
+      },
+    ],
+  },
+];
+
+const INEE_ADMIN_PLATFORMS = [
+  {
+    category: "Repositorio",
+    links: [
+      {
+        label: "INEE-admin",
+        url: "https://github.com/capassotech/INEE-admin",
+        desc: "Código fuente del panel de administración",
+      },
+    ],
+  },
+  {
+    category: "Firebase (DB, Storage y Hosting)",
+    links: [
+      {
+        label: "Firebase — QA (inee-qa)",
+        url: "https://console.firebase.google.com/u/0/project/inee-qa/overview",
+        desc: "Proyecto Firebase del admin en QA",
+      },
+      {
+        label: "Firebase — Prod (inee-admin)",
+        url: "https://console.firebase.google.com/u/0/project/inee-admin/overview",
+        desc: "Proyecto Firebase del admin en producción",
+      },
+    ],
+  },
+];
+
+const INEE_TIENDA_PLATFORMS = [
+  {
+    category: "Repositorio",
+    links: [
+      {
+        label: "INEE-tienda",
+        url: "https://github.com/capassotech/INEE-tienda",
+        desc: "Código fuente de la tienda pública",
+      },
+    ],
+  },
+  {
+    category: "Firebase (DB, Storage y Hosting)",
+    links: [
+      {
+        label: "Firebase — QA (inee-tienda-qa)",
+        url: "https://console.firebase.google.com/u/0/project/inee-tienda-qa/overview",
+        desc: "Proyecto Firebase de la tienda en QA",
+      },
+      {
+        label: "Firebase — Prod (inee-tienda-qa)",
+        url: "https://console.firebase.google.com/u/0/project/inee-tienda-qa/overview",
+        desc: "Proyecto Firebase de la tienda en producción",
+      },
+    ],
+  },
+];
+
+const INEE_CURSOS_PLATFORMS = [
+  {
+    category: "Repositorio",
+    links: [
+      {
+        label: "INEE-estudiante",
+        url: "https://github.com/capassotech/INEE-estudiante",
+        desc: "Código fuente del portal del estudiante",
+      },
+    ],
+  },
+  {
+    category: "Firebase (DB, Storage y Hosting)",
+    links: [
+      {
+        label: "Firebase — QA (inee-estudiante-qa)",
+        url: "https://console.firebase.google.com/u/0/project/inee-estudiante-qa/overview",
+        desc: "Proyecto Firebase del portal en QA",
+      },
+      {
+        label: "Firebase — Prod (inee-plataforma)",
+        url: "https://console.firebase.google.com/u/0/project/inee-plataforma/overview",
+        desc: "Proyecto Firebase del portal en producción",
+      },
+    ],
+  },
+];
+
 const INEE_BACKEND_FIREBASE_PRIVATE_KEY_QA =
   "-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDZRSlx8K8KP1xU\\nioQzXr50r9BYPo0nPZs1JDw/clBZr48x2fCkjE00CzHFupXeorPOBzCak6i2XCZa\\nyYHbJVLfa5jzQH2QwgZUujEOBDqGT3vWjkibqh0CQVo0oBSLAF6EzGIYxp9EUoij\\na+AjLRm+GGdwycQKA/fVnbXjLoLCQXb3iEiWHRloEaHcTdZYuNICjCWxwHYeDrru\\nRA22KuVEWbSb+OARWPNvZs5IrnTDZ+I7HuDhUssVqlpbmitpdcNb3jYmsBaauWzX\\nM8h6xQzFpnAtM+dJW4lT5wYyj69XEZJlVnaYY0GkT5VJDvnhHuVxvqJ1y66q7SCZ\\nqBt7vsElAgMBAAECggEAE17yMgFmacB6Z+MtpDLXQioGpkd1aEE63EMNyA5WEZjw\\naF5o8RK9M12oI1veTsosw7qqX624hgGzPbbnh/VM7TR3n4BpcYWK8PTkuL4xxZXC\\nkb9/w7kn+vJ+q2B2VGpFAwwB1vmma338Rq2wfxJfUC520nx6qPXvm7EC7W1RJSZs\\n4X4P2nvPzCGdnpPlFNwfqccLMxB6nSFrHqyLGblAw7AaSWkRyFRRvaE7D/gUKJo1\\neWqlbmAfAY4HMxeTsCkPDTBfN+IX9q9FxTkSldN9xwxNLDxfR9VOczLPoa9E4yO0\\nMAg1WOa+Tno66nLZOXo2omznRr50JavuHrDP+lAbpQKBgQD8Vs7+n+NBGu22CnrN\\nmKiqnkrEBomB/FUOoKv3kX+zBGDzR9BFB8BN+tBCFR5HpX87zWK5ai7noM8VWZ0V\\nPywyqolghMcJQF6Zfau33g/h2Ry+fGGgGt+Mzx7DVQ7vGHQS1MPjwZQrNllD2Jxr\\nazNvHUpsutRY6j6XoZXyuNRvPwKBgQDcbBtT1vVD3XFOWMo+IBeqtC7v7NxcuxHb\\nngGCvoZfNGkuRPvR9i6/OEI4ja4599GwTZIk4STKt10CzQdCx0fkGh0hVJEJ0FVJ\\nApHBiK6Gg3h3Q6i4eSjyueqHziw13WlvGkKCqtEM0yWeeg2Jq7P9a+oJUb0n6y1W\\n3QqM3m0amwKBgCQEF+NL2tnOCCO1dzWlFl3T3gQAktvUsic2U5UwVTOt6lCO7XEM\\n3CvFIrhr3ziGrJRSikbAmxVAZI49jigcLijFInp+ORJe96GcyEekEExB+tJNWnnJ\\nnCKy5Ucn+suxh8+wQo1dcdKBHViLsDe8w0iWu6qtN+XA+VIXJBnSu69tAoGAK21h\\nNPN0/xnx6O21augHwaoeVUblY5+3tP08bvX6o2dAEc2lj4hhTWtYIKxJV0JsHcAq\\nuvlgtk/KE3MxqwZ4M4ixlI+Ew9o381p+PRMgz3+3jEfYRgAZATl/66HDNBmbXDhg\\nQj5FUbGIB+EkKauamqNYSN3B1suO8z45heeMt2ECgYEA14q9JC3PaypHA1sH+ii/\\n/qCHX9wTjesWCLS6UYfWxwGhDgX0hQD0MT2KtkoDj2nOu3Fhof5B4PM/WBZIn9xS\\nmfg2F0MGQhO5T0nDnGyqrLYYO/zeFkmLBbDNO70XxZQlID6cTIeiI85Iax58F9Sy\\nmOnsWseD36GcrHUh5SQrUws=\\n-----END PRIVATE KEY-----\\n";
 
@@ -106,6 +256,7 @@ const inee = {
   name: "INEE",
   color: "#8B3740",
   description: "Plataforma educativa con tienda de cursos, portal de estudiantes y panel de administración.",
+  platforms: INEE_SHARED_PLATFORMS,
   subprojects: [
     {
       id: "inee-backend",
@@ -202,6 +353,7 @@ const inee = {
           checklist: RENDER_DEPLOY_CHECKLIST,
         },
       ],
+      platforms: INEE_BACKEND_PLATFORMS,
     },
 
     {
@@ -334,6 +486,7 @@ const inee = {
           checklist: FIREBASE_HOSTING_CHECKLIST,
         },
       ],
+      platforms: INEE_TIENDA_PLATFORMS,
     },
 
     {
@@ -457,6 +610,7 @@ const inee = {
           checklist: FIREBASE_HOSTING_CHECKLIST,
         },
       ],
+      platforms: INEE_CURSOS_PLATFORMS,
     },
 
     {
@@ -591,6 +745,7 @@ const inee = {
           checklist: FIREBASE_HOSTING_CHECKLIST,
         },
       ],
+      platforms: INEE_ADMIN_PLATFORMS,
     },
   ],
 };

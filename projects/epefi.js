@@ -27,12 +27,18 @@ const EPEFI_RENDER_CHECKLIST = [
   "Testear el endpoint /health o cualquier ruta pública para confirmar que levantó",
 ];
 
+const EPEFI_BACKEND_FIREBASE_PRIVATE_KEY_QA =
+  "-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqVEC0ci8cyGCW\\nK7PjeuXPo0QdZJmkpBjGQckBfRsXj/o9qLCU49Y+Hw4lmj+wou8YSsHW/UYgjW8H\\nJKvEeLanGSFzYXIRCeKONYUC3lYr5lmqwvNnX/6Pkyan8CiwFNNKt96rSBxUn4FO\\n8yFzwzb6LbCBQjlwku0+7dL+D30VcfNIiniKSjPil54IAtOh3CLaSTnmGsLm0qu/\\nQ0MLjYmBgCPSCHPa6cA9fPF11eTUCXFIuurG1/ONQbfSSHMAxboENoY56rV0GVEp\\nUo0kNHYffFWZkJaMg1oVwMfQtjvdGucc2kcB6An07YgiJYbGJqK9kkDtHH5/mAUK\\nS25VvfcXAgMBAAECggEABX5kLxQqJHG3rWav2nV06Uz1yt20yu4Nn09kR7g2SHzf\\nVsYuTXV8mOvws977kOhTpK/vyQEwSUDmkakDVUa9DwfgRiCgrwYBMnigpEALMK1K\\nu33Z0r3yfJHQqSs1oY0UASpYpz05lLON7/Lz/RARCBUZk7TqgpDRA1Rkysb+UAbo\\nSR+pPlBi4acF2iwacw5fUwWUqcPpJ10KMq8LepDR3TCJUS4wCD0+r4ela+qC/m8o\\nh8d2mfcvjagvLX8uDEharjuWq2JvZyGpMd00kZoGvZH9n9RnA0k6QteMg8GnTMdf\\n8GOs6Am1OfSKBryfWVaFfWziNmo7PgPDjiPY5QImuQKBgQDtDCUEyrqYTgc1tVv3\\ncYiXE+pTKJ6bTJVZw4RTKuBUWxEIOungMBeMNbMmzZie/1Hxf7N0gpokzfehoW5q\\nLgHbHVVs7FlFf7QB5qUD8MVfmRFfjAej3rkQrOaNyBOKJpsDrTAcPIlvJsthVdcx\\nyhYL4d3I0MrgUIoudO643bdRzQKBgQC38oa8oneOWb2wh1C5jnlJMJ5y8UAFlgzI\\n0x7og1Bcp5vVHXDVHHwOMvWv+Cezu1Bd+q8/pJjkLabBSJ5PbBa2sf6pR9Cb+D1B\\ndo+YBhdjTvuEc0Ngu1+rO6ERi9976ZMCZV5jxntliKtk91eZOOCN2qqnny8L5yOL\\naSID6p0YcwKBgHvZiYncZetncSrli5xX7DaLCDXUljGrrKiOl5dgYn6QafCz3zfr\\nyJHQCL8wUhpYabbUsq0gA2tRVZ1UG71MNloGFHjpb6b5FtKbcAIEDQtqjQIvxloe\\n5vBIddkD/PmEPB+KoAVQt7mkOkSrtdhkrmoc42SleioCyn+FRqi95qbNAoGAehg0\\nboi4KnhOfBmU71UuE/J9eXXANPT/z1yyq0pd0OI/gRllh0682P/iK8bfM2ElWvvF\\nzsyF3w6eHLUCv1zTRrime937DUub/ROhBBsm8ve94pBPLKmyOon9wxPAZxMGTRTT\\nrg5UYXRxrzatojoqcn2twEzcgV4OLb6+oTLcyxkCgYEAjF4XLOF+CiB3Rj0zfmio\\nz4546lhwTNIkuhsjHaQBJtx2ZkYgrxFYiCSmF5od/0uVybA5GXr+RuA18KUBiyj5\\nbwtnBZTiS6Ld0JHDCsWdn2c5LXEqu4ZqaJ/6gyYsCougvMh+4tPkbwePiKkbB6ns\\nQ/I83k7RmerguaD+HYumMKE=\\n-----END PRIVATE KEY-----\\n";
+
+const EPEFI_BACKEND_FIREBASE_PRIVATE_KEY_PROD =
+  "-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC/t55LaSjqb9Dw\\n+zfTApo7W4eWDYFJ70PF8msg7QOFjO508I72F99U+WwhjNf2fROTyVRWYCyhvW7b\\nPUqtTlEyA9KNYU+FXd+NG8BFuiop1yLFIyZlY2cuBjmJ2zSKVwAIhevoqK+lENde\\nlLcAx9LD5yumoUbL+nRif3j+6Lnh1A9UpXjhYlWTIBEd2ncGjBqJx1f8jIA1PrL7\\nqQPvObxEruw/p06PkJimJYsgm4dT4w3BFFWaGlT0as/jABUzSYCzC8YCuJ/W8DYX\\nBi/xNShi6MydHNuVXLaS0UJkPofidm4hSb3927c5Rt4P4bPNOtCeXev7nYW9nBpz\\n3Xl9tPtjAgMBAAECggEAFssOLymzK0mHTi8/8ClottKR/dK14q68oFsgRiDdAKgZ\\nwvNwERgTfaHN1ktNcx5kZndS50C17bYnk4887U/YssPmPi1/QSbrqMt6LOVjlT02\\nWA5uxofD66KNKAj/Z8x3fOFB2T5nlji4sk5SAkNqQ8+ceUocBaz4NgGxG/VarDDP\\nwsCC8e//6ldTIWLlMrxTaU3y9WAg2J2+3cgJoplvQ75K3QfnqC8RfgoVy1d3iJDS\\nmbCJoNwyeuLZZndZL0BmvZGi65jxOERlP9YUdJ7lLd4nhen9tn2j9CwdmKPWHN+m\\nw4NFdeBqnklpgX6JpXg8+8D9S19QIaUa4zYkVuQgEQKBgQDeVwI8tUX1bL433tPo\\nlXnU/aSYkNfxlwNGVOYceQCuEj8Bv7MsLdIV4vjxNrspkwEnIOXqQhxaSTLj6LQH\\nJItEtNXoD11qcwSJQB6yodMIujuF4b3O5TxRb25Cuc1AN86cdMDdlxZ0pwb2XgTv\\n5fyCHlrjzkxv9AtRZkEKIz/2SQKBgQDcvc0aYcmsAJnwh0Y2HbMP7aDfLnLZe4cy\\nDXMB7ClKCwwBCgJ1an4oQ3emHzFIYqE/HGdkNkFPoXXgyRZvYMwT6P7GIjDlgu1S\\np3X8VCsvSLdwD+GFQJTBSx4pr2lQqupJcv4NMJLjF3eaJcwlifslVQxtU9u67pjW\\n4sya6Gk0SwKBgQC8YU4E77WpfowgPEyhKFyESK93kGlWSRO+OFqLTz5zPgRiT/DY\\nAq6YWql/flbPn7z/URFcDM2G9bQHg/dcger5uJnwN2x3r6HtRAV+ZjuujlO2WJCA\\nRpt3iAkMwe4UdfQ5fXaXiNa+2XG9teVK+TqbaGqrzvPWexhHzHJYy4r6+QKBgQDS\\nowb5msB/sh8zB1J3R0Xb+Cwfa8pKP3bVy0GoXvtTXVE6GJwaAOGbeC3PRkqXwQ4P\\nFAKQ/Li7zN2X/yq6Y0q54QZkeLHiAFqIGaYbfxGqUCBC/dR8fBC2lgCVVH4RbNad\\n+e31FhnEO1t0q4avd4hAqnRuSqwNJ6qOuuL1GrtxGwKBgDCxhu8g2dVD2A/ZBowu\\ntcDvbFyQhiFR2sxWTVQ+M5ZVFLh7TwIG8I+NWNvDOPBEliHtSo+8gFEQJKSnydtL\\nsn5G6sAbk15w0mCShpJsjRMTykSBXKe6vUM24YB81yM2OVU0/Zd8uhqpDksOjtem\\nkWelLE1zWm0VCx4F1/+FhGgy\\n-----END PRIVATE KEY-----";
+
 const EPEFI_BACKEND_ENV_QA = [
   { key: "PORT", value: "3000", desc: "Puerto del servidor" },
   { key: "NODE_ENV", value: "development", desc: "Entorno de ejecución" },
   { key: "FIREBASE_PROJECT_ID", value: "epefi-admin-qa", desc: "Proyecto Firebase (QA)" },
   { key: "FIREBASE_CLIENT_EMAIL", value: "firebase-adminsdk-fbsvc@epefi-admin-qa.iam.gserviceaccount.com", desc: "Service account de Firebase Admin (QA)" },
-  { key: "FIREBASE_PRIVATE_KEY", value: "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----", desc: "Clave privada del service account QA (escapar saltos de línea)" },
+  { key: "FIREBASE_PRIVATE_KEY", value: EPEFI_BACKEND_FIREBASE_PRIVATE_KEY_QA, desc: "Clave privada del service account QA (escapar saltos de línea)" },
   { key: "FIREBASE_WEB_API_KEY", value: "AIzaSyAhDWPumrJLU7C8lkDlQtzrsqVrzwUmVWw", desc: "API key del proyecto Firebase QA" },
   { key: "FRONTEND_URL", value: "http://localhost:5173", desc: "URL del frontend (CORS)" },
 ];
@@ -42,7 +48,7 @@ const EPEFI_BACKEND_ENV_PROD = [
   { key: "NODE_ENV", value: "production", desc: "Entorno de ejecución" },
   { key: "FIREBASE_PROJECT_ID", value: "epefi-admin", desc: "Proyecto Firebase (Producción)" },
   { key: "FIREBASE_CLIENT_EMAIL", value: "firebase-adminsdk-fbsvc@epefi-admin.iam.gserviceaccount.com", desc: "Service account de Firebase Admin (prod)" },
-  { key: "FIREBASE_PRIVATE_KEY", value: "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----", desc: "Clave privada del service account prod" },
+  { key: "FIREBASE_PRIVATE_KEY", value: EPEFI_BACKEND_FIREBASE_PRIVATE_KEY_PROD, desc: "Clave privada del service account prod" },
   { key: "FIREBASE_WEB_API_KEY", value: "AIzaSyDmUUc9pf94sLVD0RRPW-t0j0zjYmfud7o", desc: "API key del proyecto Firebase prod" },
   { key: "FRONTEND_URL", value: "https://escuelaepefi.com", desc: "URL del frontend prod" },
 ];

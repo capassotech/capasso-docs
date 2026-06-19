@@ -5,6 +5,7 @@ const TABS = [
   "entornos",
   "variables",
   "deploy",
+  "plataformas",
 ];
 
 const TAB_LABELS = {
@@ -14,6 +15,7 @@ const TAB_LABELS = {
   entornos: "Entornos",
   variables: "Variables",
   deploy: "Deploy",
+  plataformas: "Plataformas",
 };
 
 const BACKEND_MODULE_STEPS = [
@@ -367,6 +369,56 @@ function renderVariables(sub) {
     </div>`;
 }
 
+function getPlatformGroups(sub, parent) {
+  const groups = [];
+  const seen = new Set();
+
+  for (const group of [...(sub.platforms || []), ...(parent.platforms || [])]) {
+    const key = group.category;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    groups.push(group);
+  }
+
+  return groups;
+}
+
+function renderPlatforms(sub, parent) {
+  const groups = getPlatformGroups(sub, parent);
+  if (!groups.length) {
+    return renderEmpty("No hay plataformas documentadas para este subproyecto.");
+  }
+
+  return groups
+    .map((group) => {
+      const links = group.links || [];
+      if (!links.length) return "";
+
+      return `
+        ${renderSubsectionTitle(group.category)}
+        <div class="platform-list">
+          ${links
+            .map(
+              (link) => `
+            <a
+              class="platform-card"
+              href="${escapeHtml(link.url)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="platform-card-body">
+                <div class="platform-card-label">${escapeHtml(link.label)}</div>
+                ${link.desc ? `<div class="platform-card-desc">${escapeHtml(link.desc)}</div>` : ""}
+              </div>
+              <span class="platform-card-action" aria-hidden="true">Abrir ↗</span>
+            </a>`
+            )
+            .join("")}
+        </div>`;
+    })
+    .join("");
+}
+
 function renderDeploy(sub) {
   const deploys = sub.deploys || [];
   if (!deploys.length) {
@@ -441,6 +493,8 @@ function renderContent() {
     el.innerHTML = `<div class="variables-page">${renderVariables(sub)}</div>`;
   } else if (currentTab === "deploy") {
     el.innerHTML = renderDeploy(sub);
+  } else if (currentTab === "plataformas") {
+    el.innerHTML = `<div class="plataformas-page">${renderPlatforms(sub, currentParent)}</div>`;
   }
 }
 
