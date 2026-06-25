@@ -223,6 +223,7 @@ function renderEntornos(sub) {
             <th>Prefijo</th>
             <th>Formato</th>
             <th>Cuándo usarlo</th>
+            <th>Se saca de</th>
           </tr>
         </thead>
         <tbody>
@@ -233,6 +234,7 @@ function renderEntornos(sub) {
               <td><code>${escapeHtml(c.prefix)}</code></td>
               <td><code>${escapeHtml(c.format)}</code></td>
               <td>${escapeHtml(c.use)}</td>
+              <td><code>${escapeHtml(c.origin ?? "")}</code></td>
             </tr>`
             )
             .join("")}

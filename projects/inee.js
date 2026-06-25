@@ -1,7 +1,7 @@
 const INEE_BRANCH_CONVENTIONS = [
-  { prefix: "feature/", format: "feature/[id_ticket]-[descripcion]", use: "Nuevas funcionalidades" },
-  { prefix: "fix/", format: "fix/[id_ticket]-[descripcion]", use: "Bugs no urgentes, van a develop" },
-  { prefix: "hotfix/", format: "hotfix/[id_ticket]-[descripcion]", use: "Bugs urgentes en producción, van directo a main" },
+  { prefix: "feature/", format: "feature/[id_ticket]-[descripcion]", use: "Nuevas funcionalidades", origin: "develop" },
+  { prefix: "fix/", format: "fix/[id_ticket]-[descripcion]", use: "Bugs no urgentes, van a develop", origin: "develop" },
+  { prefix: "hotfix/", format: "hotfix/[id_ticket]-[descripcion]", use: "Bugs urgentes en producción, van directo a main", origin: "main" },
 ];
 
 const INEE_COMMIT_FLOW = [

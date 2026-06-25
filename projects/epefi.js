@@ -1,7 +1,7 @@
 const EPEFI_BRANCH_CONVENTIONS = [
-  { prefix: "feature/", format: "feature/[id_ticket]-[descripcion]", use: "Nuevas funcionalidades" },
-  { prefix: "fix/", format: "fix/[id_ticket]-[descripcion]", use: "Bugs no urgentes, van a develop" },
-  { prefix: "hotfix/", format: "hotfix/[id_ticket]-[descripcion]", use: "Bugs urgentes en producción, van directo a main" },
+  { prefix: "feature/", format: "feature/[id_ticket]-[descripcion]", use: "Nuevas funcionalidades", origin: "develop" },
+  { prefix: "fix/", format: "fix/[id_ticket]-[descripcion]", use: "Bugs no urgentes, van a develop", origin: "develop" },
+  { prefix: "hotfix/", format: "hotfix/[id_ticket]-[descripcion]", use: "Bugs urgentes en producción, van directo a main", origin: "main" },
 ];
 
 const EPEFI_COMMIT_FLOW = [
@@ -45,12 +45,19 @@ const EPEFI_BACKEND_ENV_QA = [
 
 const EPEFI_BACKEND_ENV_PROD = [
   { key: "PORT", value: "3000", desc: "Puerto del servidor" },
-  { key: "NODE_ENV", value: "production", desc: "Entorno de ejecución" },
+  { key: "NODE_ENV", value: "development", desc: "Entorno de ejecución" },
   { key: "FIREBASE_PROJECT_ID", value: "epefi-admin", desc: "Proyecto Firebase (Producción)" },
   { key: "FIREBASE_CLIENT_EMAIL", value: "firebase-adminsdk-fbsvc@epefi-admin.iam.gserviceaccount.com", desc: "Service account de Firebase Admin (prod)" },
   { key: "FIREBASE_PRIVATE_KEY", value: EPEFI_BACKEND_FIREBASE_PRIVATE_KEY_PROD, desc: "Clave privada del service account prod" },
   { key: "FIREBASE_WEB_API_KEY", value: "AIzaSyDmUUc9pf94sLVD0RRPW-t0j0zjYmfud7o", desc: "API key del proyecto Firebase prod" },
-  { key: "FRONTEND_URL", value: "https://escuelaepefi.com", desc: "URL del frontend prod" },
+  { key: "FRONTEND_URL", value: "http://localhost:5173", desc: "URL del frontend (CORS)" },
+  { key: "VITE_FIREBASE_API_KEY", value: "AIzaSyDmUUc9pf94sLVD0RRPW-t0j0zjYmfud7o", desc: "API key del proyecto Firebase" },
+  { key: "VITE_FIREBASE_AUTH_DOMAIN", value: "epefi-admin.firebaseapp.com", desc: "Auth domain del proyecto Firebase" },
+  { key: "VITE_FIREBASE_PROJECT_ID", value: "epefi-admin", desc: "Project ID de Firebase" },
+  { key: "VITE_FIREBASE_STORAGE_BUCKET", value: "epefi-admin.firebasestorage.app", desc: "Bucket de Firebase Storage" },
+  { key: "VITE_FIREBASE_MESSAGING_SENDER_ID", value: "148104863138", desc: "Messaging sender ID" },
+  { key: "VITE_FIREBASE_APP_ID", value: "1:148104863138:web:a90f184ad83e2b65db66fb", desc: "App ID del proyecto Firebase" },
+  { key: "VITE_FIREBASE_MEASUREMENT_ID", value: "G-DJ6V3STCGZ", desc: "ID de Google Analytics" },
 ];
 
 function epefiFrontendEnv(opts) {
@@ -86,11 +93,124 @@ const EPEFI_PROD_FIREBASE = {
   measurementId: "G-DJ6V3STCGZ",
 };
 
+const EPEFI_SHARED_PLATFORMS = [
+  {
+    category: "Gestión del proyecto",
+    links: [
+      {
+        label: "Jira — gestión integral",
+        url: "https://capassotech.atlassian.net/jira/software/projects/EPEFI/boards/170",
+        desc: "Gestión integral, tableros, sprints, cronogramas y más",
+      },
+      {
+        label: "Trello — tablero EPEFI",
+        url: "https://trello.com/b/btjMNcoi/epefi",
+        desc: "Tickets y seguimiento de tareas del equipo",
+      },
+    ],
+  },
+];
+
+const EPEFI_CURSOS_PLATFORMS = [
+  {
+    category: "Repositorio",
+    links: [
+      {
+        label: "epefi-cursos",
+        url: "https://github.com/capassotech/epefi-cursos",
+        desc: "Código fuente del portal del alumno en GitHub",
+      },
+    ],
+  },
+  {
+    category: "Firebase (Hosting)",
+    links: [
+      {
+        label: "Firebase — QA (epefi-cursos-qa)",
+        url: "https://console.firebase.google.com/u/0/project/epefi-cursos-qa/overview",
+        desc: "Proyecto Firebase de cursos en QA",
+      },
+      {
+        label: "Firebase — Prod (epefi-cursos)",
+        url: "https://console.firebase.google.com/u/0/project/epefi-cursos/overview",
+        desc: "Proyecto Firebase de cursos en producción",
+      },
+    ],
+  },
+];
+
+const EPEFI_ADMIN_PLATFORMS = [
+  {
+    category: "Repositorio",
+    links: [
+      {
+        label: "epefi-admin",
+        url: "https://github.com/capassotech/epefi-admin",
+        desc: "Código fuente del panel de administración en GitHub",
+      },
+    ],
+  },
+  {
+    category: "Firebase (DB, Auth, Storage y Hosting)",
+    links: [
+      {
+        label: "Firebase — QA (epefi-admin-qa)",
+        url: "https://console.firebase.google.com/u/0/project/epefi-admin-qa/overview",
+        desc: "Proyecto Firebase del admin en QA",
+      },
+      {
+        label: "Firebase — Prod (epefi-admin)",
+        url: "https://console.firebase.google.com/u/0/project/epefi-admin/overview",
+        desc: "Proyecto Firebase del admin en producción",
+      },
+    ],
+  },
+];
+
+const EPEFI_BACKEND_PLATFORMS = [
+  {
+    category: "Repositorio",
+    links: [
+      {
+        label: "epefi-backend",
+        url: "https://github.com/capassotech/epefi-backend",
+        desc: "Código fuente del API REST en GitHub",
+      },
+    ],
+  },
+  {
+    category: "Deploy",
+    links: [
+      {
+        label: "Render Dashboard",
+        url: "https://dashboard.render.com/",
+        desc: "Web service del backend (QA y producción)",
+      },
+    ],
+  },
+  {
+    category: "Firebase (Admin SDK)",
+    links: [
+      {
+        label: "Firebase — QA (epefi-admin-qa)",
+        url: "https://console.firebase.google.com/u/0/project/epefi-admin-qa/overview",
+        desc: "Firestore, Auth y Storage usados por el backend en QA",
+      },
+      {
+        label: "Firebase — Prod (epefi-admin)",
+        url: "https://console.firebase.google.com/u/0/project/epefi-admin/overview",
+        desc: "Firestore, Auth y Storage usados por el backend en producción",
+      },
+    ],
+  },
+];
+
 const epefi = {
   id: "epefi",
   name: "EPEFI",
   color: "#F97316",
   description: "Plataforma educativa para la Escuela de Fitness online. Portal de cursos, panel de administración y backend API.",
+  platforms: EPEFI_SHARED_PLATFORMS,
   subprojects: [
     {
       id: "epefi-backend",
@@ -183,6 +303,7 @@ const epefi = {
           checklist: EPEFI_RENDER_CHECKLIST,
         },
       ],
+      platforms: EPEFI_BACKEND_PLATFORMS,
     },
 
     {
@@ -275,6 +396,7 @@ const epefi = {
           checklist: EPEFI_FIREBASE_HOSTING_CHECKLIST,
         },
       ],
+      platforms: EPEFI_CURSOS_PLATFORMS,
     },
 
     {
@@ -372,6 +494,7 @@ const epefi = {
           checklist: EPEFI_FIREBASE_HOSTING_CHECKLIST,
         },
       ],
+      platforms: EPEFI_ADMIN_PLATFORMS,
     },
   ],
 };
