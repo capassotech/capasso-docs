@@ -69,7 +69,7 @@ Notas: ${notes}`
         </table>
       </div>
 
-      <p className="text-[12px] font-semibold text-(--gray-500) uppercase tracking-[0.05em] mb-2">Mini-ejemplo (real)</p>
+      <p className="text-[12px] font-semibold text-(--gray-500) uppercase tracking-wider mb-2">Mini-ejemplo (real)</p>
       <pre className="bg-(--gray-50) border border-(--gray-200) rounded-[10px] px-4 py-3.5 text-[12.5px] text-(--gray-700) font-mono leading-[1.7] overflow-x-auto whitespace-pre-wrap mb-1">{`Stack: React + TS + Tailwind (Vialto)
 Objetivo: Input de fecha de vencimiento con warning si la fecha ya pasó
 Restricciones: timezone UTC-3, mismo patrón visual que TelefonoInput.tsx
@@ -96,13 +96,13 @@ Formato: solo el componente .tsx`}</pre>
 
       <div className="grid grid-cols-2 gap-3 mb-1">
         <div className="bg-(--gray-50) border border-(--gray-200) rounded-[10px] p-3.5">
-          <p className="text-[11px] font-semibold text-(--gray-500) uppercase tracking-[0.05em] mb-2">❌ Todo junto</p>
+          <p className="text-[11px] font-semibold text-(--gray-500) uppercase tracking-wider mb-2">❌ Todo junto</p>
           <p className="text-[12.5px] text-(--gray-600) italic leading-[1.6]">
             "Hacé un CRUD de choferes con validación, conexión a la API, manejo de errores, estilos y tests"
           </p>
         </div>
         <div className="bg-(--blue-50) border border-(--blue-100) rounded-[10px] p-3.5">
-          <p className="text-[11px] font-semibold text-(--blue-500) uppercase tracking-[0.05em] mb-2">✅ Fragmentado</p>
+          <p className="text-[11px] font-semibold text-(--blue-500) uppercase tracking-wider mb-2">✅ Fragmentado</p>
           <ol className="list-none flex flex-col gap-1.5">
             {[
               'Estructura del formulario de chofer, campos: X, Y, Z',
@@ -110,7 +110,7 @@ Formato: solo el componente .tsx`}</pre>
               'Conexión del submit a POST /choferes usando ApiHttpClient',
               'Tests unitarios de la validación',
             ].map((step, i) => (
-              <li key={i} className="text-[12.5px] text-(--gray-700) flex items-start gap-2 leading-[1.5]">
+              <li key={i} className="text-[12.5px] text-(--gray-700) flex items-start gap-2 leading-normal">
                 <span className="text-(--blue-500) font-bold shrink-0 text-[11px] mt-px">{i + 1}.</span>
                 {step}
               </li>
@@ -127,7 +127,7 @@ Formato: solo el componente .tsx`}</pre>
 
       <div className="relative bg-(--gray-50) border border-(--gray-200) rounded-[10px] overflow-hidden mb-1">
         <div className="flex items-center justify-between px-4 py-2.5 border-b border-(--gray-200)">
-          <span className="text-[11px] font-semibold text-(--gray-500) uppercase tracking-[0.05em]">
+          <span className="text-[11px] font-semibold text-(--gray-500) uppercase tracking-wider">
             {sub.name}
           </span>
           <button
@@ -175,7 +175,7 @@ Formato: solo el componente .tsx`}</pre>
       {/* Model tiers */}
       <div className="grid grid-cols-2 gap-3 mb-5">
         <div className="bg-(--gray-50) border border-(--gray-200) rounded-[10px] p-4">
-          <p className="text-[11px] font-semibold text-(--gray-500) uppercase tracking-[0.05em] mb-1">Modelos pesados / pensantes</p>
+          <p className="text-[11px] font-semibold text-(--gray-500) uppercase tracking-wider mb-1">Modelos pesados / pensantes</p>
           <ul className="list-none flex flex-col gap-1.5">
             {[
               'Arquitectura inicial de un feature',
@@ -183,7 +183,7 @@ Formato: solo el componente .tsx`}</pre>
               'Debugging de lógica compleja',
               'Generación de la base de un módulo nuevo',
             ].map((item, i) => (
-              <li key={i} className="text-[12.5px] text-(--gray-600) flex items-start gap-2 leading-[1.5]">
+              <li key={i} className="text-[12.5px] text-(--gray-600) flex items-start gap-2 leading-normal">
                 <span className="text-(--gray-400) shrink-0">·</span>{item}
               </li>
             ))}
@@ -191,7 +191,7 @@ Formato: solo el componente .tsx`}</pre>
         </div>
 
         <div className="bg-(--blue-50) border border-(--blue-100) rounded-[10px] p-4">
-          <p className="text-[11px] font-semibold text-(--blue-500) uppercase tracking-[0.05em] mb-1">Modelos eficientes / rápidos</p>
+          <p className="text-[11px] font-semibold text-(--blue-500) uppercase tracking-wider mb-1">Modelos eficientes / rápidos</p>
           <ul className="list-none flex flex-col gap-1.5">
             {[
               'Iteraciones sobre código ya generado',
@@ -199,7 +199,7 @@ Formato: solo el componente .tsx`}</pre>
               'Renombrar, reformatear, traducir',
               'Preguntas rápidas sobre sintaxis o API',
             ].map((item, i) => (
-              <li key={i} className="text-[12.5px] text-(--gray-600) flex items-start gap-2 leading-[1.5]">
+              <li key={i} className="text-[12.5px] text-(--gray-600) flex items-start gap-2 leading-normal">
                 <span className="text-(--blue-400) shrink-0">·</span>{item}
               </li>
             ))}
@@ -208,7 +208,7 @@ Formato: solo el componente .tsx`}</pre>
       </div>
 
       {/* Key recommendation */}
-      <p className="text-[12px] font-semibold text-(--gray-500) uppercase tracking-[0.05em] mb-2">Patrón recomendado</p>
+      <p className="text-[12px] font-semibold text-(--gray-500) uppercase tracking-wider mb-2">Patrón recomendado</p>
       <div className="flex items-stretch gap-0 mb-1 rounded-[10px] overflow-hidden border border-(--gray-200)">
         <div className="flex-1 bg-(--gray-50) px-4 py-3.5">
           <p className="text-[11px] font-semibold text-(--gray-500) uppercase tracking-[0.04em] mb-1.5">Fase 1 — Base inicial</p>

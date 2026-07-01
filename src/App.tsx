@@ -116,7 +116,7 @@ export default function App() {
 
           {/* Project header */}
           <div className="bg-(--blue-50) border border-(--blue-100) rounded-xl px-6 pt-[22px] shrink-0 transition-[background-color,border-color] duration-200">
-            <div className="text-[11px] font-semibold text-(--blue-500) uppercase tracking-[0.05em] mb-1">
+            <div className="text-[11px] font-semibold text-(--blue-500) uppercase tracking-wider mb-1">
               {currentParent.name}
             </div>
             <div className="text-[24px] font-bold text-(--gray-900) tracking-tight mb-1 leading-[1.2]">
