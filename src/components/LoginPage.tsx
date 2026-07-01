@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { login } from '../auth'
-import { Eye, EyeDashed, EyeOff } from 'lucide-react'
+import { Eye, EyeOff } from 'lucide-react'
 
 interface LoginPageProps {
   onLogin: (username: string) => void

@@ -264,6 +264,10 @@ export const inee: Project = {
       id: "inee-backend",
       name: "INEE-backend",
       description: "API REST central que sirve a todos los frontends de INEE. Maneja autenticación, cursos, pagos, emails, certificados y más.",
+      aiContext: {
+        auth: "Firebase Admin SDK. Cada request verifica el token del cliente via middleware. Endpoints internos usan JWT_SECRET propio.",
+        notes: "Dos cuentas MercadoPago (principal + Rocío). No modificar módulo payments sin coordinar. Scheduler de cron activo en prod.",
+      },
       stack: [
         { label: "Node.js", color: "green" },
         { label: "Express 5", color: "green" },
@@ -362,6 +366,10 @@ export const inee: Project = {
       id: "inee-tienda",
       name: "INEE-tienda",
       description: "Tienda pública de INEE. Landing principal, catálogo de cursos, ebooks, eventos, carrito y checkout con MercadoPago.",
+      aiContext: {
+        auth: "Firebase Auth cliente (email/password + Google OAuth). Token se envía al backend en Authorization header.",
+        notes: "Prebuild genera sitemap automáticamente. CartContext persiste el carrito. Modo ARS/USD switcheable vía PricingContext.",
+      },
       stack: [
         { label: "React 18", color: "blue" },
         { label: "TypeScript", color: "blue" },
@@ -495,6 +503,10 @@ export const inee: Project = {
       id: "inee-cursos",
       name: "INEE-cursos",
       description: "Portal del estudiante. Acceso a cursos comprados, clases, exámenes, certificados y progreso.",
+      aiContext: {
+        auth: "Firebase Auth cliente (email/password + Google OAuth). Acceso a clases condicionado a compra verificada en el backend.",
+        notes: "dataAdapters.ts normaliza respuestas del backend. Linking de providers Firebase implementado. usePaginatedData para lazy loading.",
+      },
       stack: [
         { label: "React 18", color: "blue" },
         { label: "TypeScript", color: "blue" },
@@ -619,6 +631,10 @@ export const inee: Project = {
       id: "inee-admin",
       name: "INEE-admin",
       description: "Panel de administración interno. Gestión de productos, alumnos, órdenes, eventos, exámenes, membresías y configuración del sistema.",
+      aiContext: {
+        auth: "Firebase Auth cliente (email/password). Solo usuarios con rol admin. Sin Google OAuth.",
+        notes: "dnd-kit para drag & drop de módulos. react-easy-crop para imágenes. react-quill para rich text. Validación con Zod.",
+      },
       stack: [
         { label: "React 18", color: "blue" },
         { label: "TypeScript", color: "blue" },

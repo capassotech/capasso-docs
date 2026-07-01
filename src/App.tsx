@@ -30,6 +30,7 @@ import { EntornosTab } from './components/tabs/EntornosTab'
 import { VariablesTab } from './components/tabs/VariablesTab'
 import { DeployTab } from './components/tabs/DeployTab'
 import { PlataformasTab } from './components/tabs/PlataformasTab'
+import { IATab } from './components/tabs/IATab'
 
 export default function App() {
   const [authed, setAuthed] = useState<string | null>(() => getSession()?.username ?? null)
@@ -82,6 +83,7 @@ export default function App() {
       case 'variables':   return <VariablesTab sub={currentSubproject} currentEnvGroup={currentEnvGroup} onSelectEnvGroup={setCurrentEnvGroup} />
       case 'deploy':      return <DeployTab sub={currentSubproject} />
       case 'plataformas': return <PlataformasTab sub={currentSubproject} parent={currentParent} />
+      case 'ia':          return <IATab sub={currentSubproject} />
       default:            return null
     }
   }

@@ -163,6 +163,10 @@ export const epefi: Project = {
       id: 'epefi-backend',
       name: 'EPEFI-backend',
       description: 'API REST central de EPEFI. Gestiona autenticación, cursos, materias, módulos, exámenes y progreso de alumnos.',
+      aiContext: {
+        auth: 'Firebase Admin SDK. Verifica token del cliente en cada request via middleware.',
+        notes: '—',
+      },
       stack: [
         { label: 'Node.js', color: 'green' },
         { label: 'Express 5', color: 'green' },
@@ -246,6 +250,10 @@ export const epefi: Project = {
       id: 'epefi-cursos',
       name: 'EPEFI-cursos',
       description: 'Portal del alumno. Acceso a formaciones, reproducción de módulos, exámenes y perfil de usuario.',
+      aiContext: {
+        auth: 'Firebase Auth cliente (email/password + Google OAuth). Acceso condicionado a compra verificada en el backend.',
+        notes: '—',
+      },
       stack: [
         { label: 'React 18', color: 'blue' },
         { label: 'TypeScript', color: 'blue' },
@@ -328,6 +336,10 @@ export const epefi: Project = {
       id: 'epefi-admin',
       name: 'EPEFI-admin',
       description: 'Panel de administración interno. Gestión de formaciones, materias, módulos, alumnos, exámenes y estadísticas.',
+      aiContext: {
+        auth: 'Firebase Auth cliente (email/password). Solo usuarios administradores.',
+        notes: '—',
+      },
       stack: [
         { label: 'React 19', color: 'blue' },
         { label: 'TypeScript', color: 'blue' },

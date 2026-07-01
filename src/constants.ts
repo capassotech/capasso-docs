@@ -1,4 +1,4 @@
-export const TABS = ['overview', 'estructura', 'módulos', 'entornos', 'variables', 'deploy', 'plataformas']
+export const TABS = ['overview', 'estructura', 'módulos', 'entornos', 'variables', 'deploy', 'plataformas', 'ia']
 
 export const TAB_LABELS: Record<string, string> = {
   overview:    'Overview',
@@ -8,4 +8,5 @@ export const TAB_LABELS: Record<string, string> = {
   variables:   'Variables',
   deploy:      'Deploy',
   plataformas: 'Plataformas',
+  ia:          'IA',
 }

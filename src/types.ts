@@ -16,6 +16,10 @@ export interface Subproject {
   name: string
   description: string
   stack: StackBadge[]
+  aiContext?: {
+    auth?: string
+    notes?: string
+  }
   overview?: {
     about: string
     objective: string
