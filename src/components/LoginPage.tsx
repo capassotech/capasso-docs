@@ -69,7 +69,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
               id="username"
               type="text"
               className={inputBase}
-              placeholder="admin@capassotech.com"
+              placeholder="email@ejemplo.com"
               value={username}
               onChange={e => setUsername(e.target.value)}
               autoComplete="username"
