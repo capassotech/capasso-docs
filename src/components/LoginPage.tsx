@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { login } from '../auth'
-import { Eye } from 'lucide-react'
+import { Eye, EyeDashed, EyeOff } from 'lucide-react'
 
 interface LoginPageProps {
   onLogin: (username: string) => void
@@ -11,6 +11,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -87,14 +88,26 @@ export function LoginPage({ onLogin }: LoginPageProps) {
             ].join(' ')}>
               <input
                 id="password"
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 className="flex-1 py-2.5 text-[13px] font-[inherit] text-(--gray-900) bg-transparent border-none outline-none placeholder:text-(--gray-400)"
                 placeholder="••••••••"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
-              <Eye size={15} className="text-(--gray-400) shrink-0" />
+              {showPassword ? (
+                <EyeOff
+                  onClick={() => setShowPassword(!showPassword)}
+                  size={15}
+                  className="text-(--gray-400) shrink-0 cursor-pointer"
+                />
+              ) : (
+                <Eye
+                  onClick={() => setShowPassword(!showPassword)}
+                  size={15}
+                  className="text-(--gray-400) shrink-0 cursor-pointer"
+                />
+              )}
             </div>
           </div>
 
