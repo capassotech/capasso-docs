@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* Tailwind dark variant usa [data-theme="dark"] en lugar de prefers-color-scheme */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --blue-600: #2563eb;
+  --blue-500: #3b82f6;
+  --blue-400: #60a5fa;
+  --blue-100: #dbeafe;
+  --blue-50: #eff6ff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --surface: #ffffff;
+  --on-primary: #ffffff;
+  --tabs-divider: rgba(59, 130, 246, 0.12);
+  --badge-green-bg: #dcfce7;
+  --badge-green-fg: #166534;
+  --badge-amber-bg: #fef3c7;
+  --badge-amber-fg: #92400e;
+  --badge-purple-bg: #ede9fe;
+  --badge-purple-fg: #5b21b6;
+  --badge-teal-bg: #ccfbf1;
+  --badge-teal-fg: #115e59;
+  --env-prod-bg: #dcfce7;
+  --env-prod-fg: #16a34a;
+  --env-qa-bg: #fef3c7;
+  --env-qa-fg: #d97706;
+  --sidebar-w: 220px;
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --radius: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 17px;
+  --text-xl: 22px;
+  --text-2xl: 24px;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --blue-600: #93c5fd;
+  --blue-500: #60a5fa;
+  --blue-400: #93c5fd;
+  --blue-100: #1e3a5f;
+  --blue-50: #172554;
+  --gray-50: #0c1017;
+  --gray-100: #151d28;
+  --gray-200: #263040;
+  --gray-300: #3a4a5e;
+  --gray-400: #64748b;
+  --gray-500: #94a3b8;
+  --gray-600: #cbd5e1;
+  --gray-700: #e2e8f0;
+  --gray-900: #f1f5f9;
+  --surface: #161f2c;
+  --on-primary: #ffffff;
+  --tabs-divider: rgba(96, 165, 250, 0.2);
+  --badge-green-bg: #14532d;
+  --badge-green-fg: #86efac;
+  --badge-amber-bg: #78350f;
+  --badge-amber-fg: #fcd34d;
+  --badge-purple-bg: #4c1d95;
+  --badge-purple-fg: #c4b5fd;
+  --badge-teal-bg: #134e4a;
+  --badge-teal-fg: #5eead4;
+  --env-prod-bg: #14532d;
+  --env-prod-fg: #4ade80;
+  --env-qa-bg: #78350f;
+  --env-qa-fg: #fbbf24;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--gray-200);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--text-base);
+  background: var(--gray-50);
+  color: var(--gray-900);
+  height: 100vh;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Todos los estilos de componentes migrados a Tailwind — ver src/components/ */
